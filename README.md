@@ -1,2 +1,13 @@
-# cpchain-dapps-sponsor
-Sponsor Contract
+# Sponsor Contract
+
+## Setup
+
+```bash
+
+npm install
+
+# test
+truffle test
+
+
+```
