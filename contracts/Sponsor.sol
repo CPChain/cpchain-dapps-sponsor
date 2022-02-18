@@ -89,7 +89,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
     }
 
     function modifyDapp(uint id, string name, address contractAddr, string url, address receiverAddr, string extendedInfo) external onlyEnabled onlyRegistrant(id) onlyRegistered(id) {
-        if(strCompare(name, Dapps[id].dappName)) {
+        if(!strCompare(name, Dapps[id].dappName)) {
             require(name_list[name] == false, "This name has already been used");
         }
         require(bytes(name).length <= 100, "Length of name should less than 100");
