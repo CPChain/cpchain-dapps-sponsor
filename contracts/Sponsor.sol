@@ -116,11 +116,12 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
 
     function sponsor(uint id, uint256 amount) external payable onlyEnabled onlyRegistered(id) {
         require(amount >= 1 ether, "The sponsor amount can not less than 1");
-        require(amount <= maxSponsorLimit, "The sponsor amount can not greater than max donation limit");
-        address receiverAddr = Dapps[id].receiverAddr;
-        receiverAddr.transfer(amount);
+        require(amount <= maxSponsorLimit, "The sponsor amount can not greater than max sponsor limit");
+        address receiver = Dapps[id].receiverAddr;
+        receiver.transfer(amount);
         Dapps[id].donationAmount += amount;
-        
-        emit Sponsor(msg.sender, receiverAddr, amount, block.timestamp);
+        uint256 sponsor_at = block.timestamp;
+
+        emit Sponsor(msg.sender, receiver, amount, sponsor_at);
     }
 }

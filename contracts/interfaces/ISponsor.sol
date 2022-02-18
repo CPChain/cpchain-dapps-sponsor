@@ -2,7 +2,7 @@
 pragma solidity ^0.4.24;
 
 interface ISponsor {
-    event Sponsor(address indexed sponsors, address indexed patron, uint256 sponsorAmount, uint256 indexed sponsor_at);
+    event Sponsor(address sponsors, address patron, uint256 sponsorAmount, uint256 sponsor_at);
     
     /**
      * sponsor a project

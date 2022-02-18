@@ -39,7 +39,7 @@ contract("Sponsor takedownDapp", (accounts) => {
             assert.ok(error.toString().includes("This dapp is deregistered"))
         }
     })
-    it("3 id = 4, Dapps[4] is not exist", async() => {
+    it("4 id = 4, Dapps[4] is not exist", async() => {
         instance = await Sponsor.deployed()
         try {
             await instance.takedownDapp(4, {from: accounts[0]})
