@@ -25,9 +25,23 @@
 |---|----|------|---|
 |1|id = 1, Dapps[1] is exist, msg.sender = Dapps[1].registrant| success |Done|
 |2|id = 2, Dapps[2] is exist, msg.sender != Dapps[2].registrant|fail|Done|
-|3|id = 3, Dapps[3] is deregistered|fail|   |
-|4|id = 4, Dapps[4] is not exist |fail|   |
+|3|id = 3, Dapps[3] is deregistered|fail|Done|
+|4|id = 4, Dapps[4] is not exist |fail|Done|
 
 
 ## modify
+
+## takedown
+|#|Name|Expect|Done|
+|---|----|------|---|
+|1|id = 1, Dapps[1] is exist, msg.sender = owner| success |Done|
+|2|id = 2, Dapps[2] is exist, msg.sender != owner|fail|Done|
+|3|id = 3, Dapps[3] is deregistered|fail|Done|
+|4|id = 4, Dapps[4] is not exist |fail|Done|
+
+
+
+## sponsor
+
+## change params
 
