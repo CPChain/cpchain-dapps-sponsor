@@ -1,6 +1,6 @@
 // Deploy Example
-var Example = artifacts.require("./Example.sol");
+var Sponsor = artifacts.require("./Sponsor.sol");
 
 module.exports = function(deployer) {
-        deployer.deploy(Example); //"参数在第二个变量携带"
+        deployer.deploy(Sponsor); //"参数在第二个变量携带"
 };
