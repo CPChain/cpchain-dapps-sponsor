@@ -38,7 +38,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
 
 
     modifier onlyRegistrant(uint id) {
-        require(Dapps[id].registrant == msg.sender);
+        require(Dapps[id].registrant == msg.sender, "You're not the owner of this dapp");
         _;
     }
 
@@ -90,7 +90,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
 
     function modifyDapp(uint id, string name, address contractAddr, string url, address receiverAddr, string extendedInfo) external onlyEnabled onlyRegistrant(id) onlyRegistered(id) {
         if(strCompare(name, Dapps[id].dappName)) {
-            require(name_list[name] == false, "This name has already been used ");
+            require(name_list[name] == false, "This name has already been used");
         }
         require(bytes(name).length <= 100, "Length of name should less than 100");
         require(bytes(url).length <= 100, "Length of url should less than 100");
