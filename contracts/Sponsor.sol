@@ -57,7 +57,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
     }
 
     function registerDapp(string name, address contractAddr, string url, address receiverAddr, string extendedInfo) external onlyEnabled {
-        require(bytes(name).length <= 100, "Length of name should less than 20" );
+        require(bytes(name).length <= 100, "Length of name should less than 100" );
         require(name_list[name] == false, "This name has already been used");
         require(bytes(url).length <= 100, "Length of url should less than 100");
         require(bytes(extendedInfo).length <= 200, "Length of extendedInfo should less than 200");
@@ -92,7 +92,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
         if(strCompare(name, Dapps[id].dappName)) {
             require(name_list[name] == false, "This name has already been used ");
         }
-        require(bytes(name).length <= 100, "Length of name should less than 20");
+        require(bytes(name).length <= 100, "Length of name should less than 100");
         require(bytes(url).length <= 100, "Length of url should less than 100");
         require(bytes(extendedInfo).length <= 200, "Length of extendedInfo should less than 200");
         Dapps[id].dappName = name;
