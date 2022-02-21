@@ -63,3 +63,35 @@ contract("Sponsor enbale and disable contract", (accounts) => {
         }
     })
 })
+
+// test changeOwner
+contract("Sponsor changeOwner", (accounts) => {
+    it("1. sender is owner", async() => {
+        const instance = await Sponsor.deployed()
+        await instance.transferOwnership(accounts[1])
+        await instance.registerDapp("test_1", accounts[1], "www.test.1.com", accounts[2], "{}", {from: accounts[1]})
+        // old owner can not take down Dapps or other funtion that only owner can use
+        try {
+            await instance.takedownDapp(1, {from: accounts[0]})
+            assert.fail()
+        } catch(error) {
+            assert.ok(error.toString().includes("You're not the owner of this contract"))
+        }
+
+        // new owner have the permission
+        const tx = await instance.takedownDapp(1, {from: accounts[1]})
+        await utils.checkEvent(tx, utils.EVENT_TAKEDOWN_DAPP, async (e) => {
+            assert.equal(e.id, 1, "id is error")
+            assert.equal(e.dappName, 'test_1', "dappName is error")
+          });
+    })
+    it("2. sender != owner", async() => {
+        const instance = await Sponsor.deployed()
+        try {
+            await instance.transferOwnership(accounts[2], {from: accounts[3]})
+            assert.fail()
+        } catch(error) {
+            assert.ok(error.toString().includes("You're not the owner of this contract"))
+        }
+    })
+})
