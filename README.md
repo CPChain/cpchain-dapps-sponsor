@@ -4,7 +4,12 @@
 ## Product Vision
 This contract is used to open community donation capabilities, which can form a mutual aid atmosphere in the community, which is conducive to building a developer ecosystem. Donation refers to donating to DApp. Users can register the DApp to be donated by themselves, and specify the contract address, contract homepage, and beneficiary address.
 
-## Function and Event
+## Contract Function
++ registerDapp : anyone can register their Dapps
++ deregisterDapp: registrant can deregitrant their Dapp
++ modifyDapp : registrant can modify their Dapp info
++ takedownDapp: admin can takedown Dapp that do not comply with the regulations
++ sponsor: anyone can sponsor their favorite Dapp
 ## Setup
 
 ```bash
