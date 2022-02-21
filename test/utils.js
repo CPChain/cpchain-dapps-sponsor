@@ -8,6 +8,7 @@ exports.EVENT_REGISTER_DAPP = "RegisterDapp"
 exports.EVENT_DEREGISTER_DAPP = "DeregisterDapp"
 exports.EVENT_TAKEDOWN_DAPP = "TakedownDapp"
 exports.EVENT_SPONSOR = "Sponsor"
+exports.EVENT_MODIFY_DAPP = "ModifyDapp"
 
 exports.checkEvent = async (tx, event, cb) => {
   let result;

@@ -101,7 +101,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
         emit RegisterDapp(name, contractAddr, url, receiverAddr, extendedInfo, created_at);
     }
 
-    function deregisterDapp(uint id) external onlyEnabled onlyRegistrant(id) onlyRegistered(id) {
+    function deregisterDapp(uint id) external onlyEnabled onlyRegistered(id) onlyRegistrant(id){
         Dapps[id].deregistered = true;
         string memory name = Dapps[id].dappName;
         name_list[name] = false;
@@ -109,7 +109,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
         emit DeregisterDapp(id, msg.sender, name);
     }
 
-    function modifyDapp(uint id, string name, address contractAddr, string url, address receiverAddr, string extendedInfo) external onlyEnabled onlyRegistrant(id) onlyRegistered(id) {
+    function modifyDapp(uint id, string name, address contractAddr, string url, address receiverAddr, string extendedInfo) external onlyEnabled onlyRegistered(id) onlyRegistrant(id){
         if(!strCompare(name, Dapps[id].dappName)) {
             require(name_list[name] == false, "This name has already been used");
         }

@@ -21,6 +21,8 @@
 
 ## deregister
 
+register some dapps at first
+
 |#|Name|Expect|Done|
 |---|----|------|---|
 |1|id = 1, Dapps[1] is exist, msg.sender = Dapps[1].registrant|success|Done|
@@ -31,7 +33,29 @@
 
 ## modify
 
+register some dapps at first
+
++ msg.sender = accounts[1]
++ name = "test_2"
++ contractAddr = accounts[2]
++ url = "www.test.2.com"
++ receiverAddr = account[3]
++ extendedInfo = "{}"
+
+
+|#|Name|Expect|Done|
+|---|----|------|---|
+|1|params as default|success|Done|
+|2|dapp is not exist|fail|Done|
+|3|dapp is deregisted|fail|Done|
+|4|sender != Dapps[id].registrant|fail|Done|
+|5|name is already used |fail|Done|
+|6|length of name,url,extendedinfo greater than max |fail|Done|
+
 ## takedown
+
+register some dapps at first
+
 |#|Name|Expect|Done|
 |---|----|------|---|
 |1|id = 1, Dapps[1] is exist, msg.sender = owner|success|Done|
@@ -42,6 +66,9 @@
 
 
 ## sponsor
+
+register some dapps at first
+
 |#|Name|Expect|Done|
 |---|----|------|---|
 |1|Dapps[id] is exist, amount = 10 ether|success|Done|

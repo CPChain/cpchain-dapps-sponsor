@@ -46,7 +46,7 @@ contract("Sponsor deregisterDapp", (accounts) => {
             assert.fail()
         }
         catch(error) {
-            assert.ok(error.toString().includes("You're not the owner of this dapp"))
+            assert.ok(error.toString().includes("This dapp is not registered"))
         }
     })
 })
