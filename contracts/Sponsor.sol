@@ -11,7 +11,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
     uint256 public maxSponsorLimit = 10000 ether;
     uint public maxNameLength = 100;
     uint public maxUrlLength = 100;
-    uint public maxInfoLength = 400;
+    uint public maxInfoLength = 200;
 
     struct Dapp {
         uint id;
@@ -71,17 +71,17 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
         maxUrlLength = len;
     }
 
-    function setMaxUrlLength(uint len) external onlyOwner {
+    function setMaxInfoLength(uint len) external onlyOwner {
         require(len >= 1 , "The Max length of info can not less than 1");
         require(len <=10000, "The Max length of info can not greater than 10000");
-        maxinfoLength = len;
+        maxInfoLength = len;
     }
 
     function registerDapp(string name, address contractAddr, string url, address receiverAddr, string extendedInfo) external onlyEnabled {
         require(bytes(name).length <= maxNameLength, "Length of name should less than 100" );
         require(name_list[name] == false, "This name has already been used");
         require(bytes(url).length <= maxUrlLength, "Length of url should less than 100");
-        require(bytes(extendedInfo).length <= maxinfoLength, "Length of extendedInfo should less than 200");
+        require(bytes(extendedInfo).length <= maxInfoLength, "Length of extendedInfo should less than 200");
 
         uint256 created_at = block.timestamp;
         dapps_seq += 1;
@@ -115,7 +115,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
         }
         require(bytes(name).length <= maxNameLength, "Length of name should less than 100");
         require(bytes(url).length <= maxUrlLength, "Length of url should less than 100");
-        require(bytes(extendedInfo).length <= maxinfoLength, "Length of extendedInfo should less than 200");
+        require(bytes(extendedInfo).length <= maxInfoLength, "Length of extendedInfo should less than 200");
         Dapps[id].dappName = name;
         Dapps[id].contractAddr = contractAddr;
         Dapps[id].indexUrl = url;
