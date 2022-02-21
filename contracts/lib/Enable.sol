@@ -15,7 +15,7 @@ contract Enable is Ownable {
      * @dev Throws if enanled is false
      */
     modifier onlyEnabled() {
-        require(enabled);
+        require(enabled, "The Contract is disabled");
         _;
     }
 

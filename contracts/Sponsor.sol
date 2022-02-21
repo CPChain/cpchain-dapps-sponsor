@@ -125,7 +125,7 @@ contract Sponsor is Enable, IAdmin , IRegistrant, ISponsor {
         emit ModifyDapp(id, name, contractAddr, url, receiverAddr, extendedInfo, block.timestamp);
     }
 
-    function takedownDapp(uint id) external onlyOwner onlyEnabled onlyRegistered(id){
+    function takedownDapp(uint id) external onlyEnabled onlyOwner onlyRegistered(id){
         Dapps[id].deregistered = true;
         string memory name = Dapps[id].dappName;
         name_list[name] = false;
