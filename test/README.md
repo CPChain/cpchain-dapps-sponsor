@@ -78,4 +78,33 @@ register some dapps at first
 |5|amount > maxDonationLimit|fail|Done|
 
 ## change params
+|#|Name|Expect|Done|
+|---|----|------|---|
+|1|set maxSponsorLimit = 0.9 |fail|Done|
+|2|set maxSponsorLimit = 1|success|Done|
+|3|set maxSponsorLimit = 100000|success|Done|
+|4|set maxSponsorLimit = 100001|fail|Done|
+|5|set maxNameLength = 0.9 |fail|Done|
+|6|set maxNameLength = 1|success|Done|
+|7|set maxNameLength = 10000|success|Done|
+|8|set maxNameLength = 10001|fail|Done|
+|9|set maxUrlLength = 0.9 |fail|Done|
+|10|set maxUrlLength = 1|success|Done|
+|11|set maxUrlLength = 10000|success|Done|
+|12|set maxUrlLength = 10001|fail|Done|
+|9|set maxInfoLength = 0.9 |fail|Done|
+|10|set maxInfoLength = 1|success|Done|
+|11|set maxInfoLength = 10000|success|Done|
+|12|set maxInfoLength = 10001|fail|Done|
+## enable disable
+|#|Name|Expect|Done|
+|---|----|------|---|
+|1| set enabled = false |sucess|Done|
+|2| set enabled = true |sucess|Done|
+|3| sender != owner |fail|Done|
 
+## changeOwner
+|#|Name|Expect|Done|
+|---|----|------|---|
+|1| sender is owner |sucess|Done|
+|2| sender != owner |fail|Done|
